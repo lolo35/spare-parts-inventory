@@ -2,8 +2,8 @@
 session_start();
 require_once 'conn.php';
 require_once 'functions.php';
-if(!isset($_SESSION['user_login'])){
-	$URL = "login.php";
+if(isset($_SESSION['user_login'])){
+	$URL = "index.php";
 	redirect($URL);
 }
 ?>
@@ -21,23 +21,31 @@ if(!isset($_SESSION['user_login'])){
 		<script src="js/jquery-ui.min.js" type="text/javascript"></script>
 		<script src="js/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/all.js"></script>
+    <script type="text/javascript" src="scripts/js/scripts.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css"/>
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
 		<link type="text/css" rel="stylesheet" href="css/custom-style.css" />
 		<link rel="stylesheet" href="css/all.css">
 	</head>
-	<body style="background-color: #EDEDED;">
+  <body>
 		<header>
-			<nav class="navbar navbar-toggleable-md navbar-light bg-faded colors" id="navbar">
-				<a class="navbar-brand" href="#">
-					<img src="images/trace-logo.png" width="90" height="60" class="rounded img-fluid" alt="brand icon">
-                  Spare Parts System
-				</a>
-                <h4 id="header-text"></h4>
-				<div class="my-2 my-lg-0">
-					<!--<img src="images/autoliv_logo.png" class="rounded img-fluid" width="150" height="50" alt="Autoliv Logo">-->
-				</div>
-			</nav>
+
 		</header>
-		<br>
+    <div class="container-fluid">
+      <div class="row" style="margin-top: 100px;">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+          <div id="main-login-container">
+            <img src="images/spare-parts-logo-big.png" class="img-fluid" onclick="login()" alt="">
+          </div>          
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

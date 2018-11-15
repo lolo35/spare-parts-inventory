@@ -15,9 +15,7 @@ include 'header.php';
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group0item-action" id="a-ore" onclick="displayOre(this.id)">Ore</a>
-            </div>
+            
             <div id="left-side-div">
 
             </div>
