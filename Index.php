@@ -48,6 +48,26 @@ include 'header.php';
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
+            <div class="card text-center" style="width: 18rem;">
+              <img src="images/<?php echo $_SESSION['user_login'];?>.jpg" alt="User" class="card-img-top">
+              <div class="card-body">
+                <?php
+                $name = explode(" ", $_SESSION['user_login']);
+                ?>
+                <h5 class="card-title"><?php echo $_SESSION['user_login'];?></h5>
+                <p class="card-text">Bine ai venit <?php echo $name[1];?></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Some user related stuff here</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="btn btn-danger btn-block card-link">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
             <div id="right-side-div">
 
             </div>
@@ -57,7 +77,11 @@ include 'header.php';
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
 
+  });
+</script>
 <?php
 include 'footer.php';
 /**
