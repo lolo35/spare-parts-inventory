@@ -5,6 +5,11 @@ require_once 'functions.php';
 if(!isset($_SESSION['user_login'])){
 	$URL = "login.php";
 	redirect($URL);
+}else{
+	$filename = "login.log";
+	if(file_exists($filename)){
+		unlink($filename);
+	}
 }
 ?>
 <!DOCTYPE html>

@@ -33,7 +33,7 @@ if(isset($_GET['login']) && $_GET['login'] === "true"){
           url: "scripts/php/getLoginInfo.php",
           cache: false,
           success: function(loginData){
-            //console.log(loginData);
+            console.log(loginData);
             $("#cartela-input").val(loginData);
           }
         });
@@ -56,7 +56,7 @@ if(isset($_GET['login']) && $_GET['login'] === "true"){
           if(checkUserData === "success"){
             $("body").fadeOut("slow", function(){
               window.location.replace("index.php");
-            });            
+            });
           }
         }
       });

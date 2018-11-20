@@ -15,7 +15,7 @@ include 'header.php';
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
-            
+
             <div id="left-side-div">
 
             </div>
