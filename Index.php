@@ -15,7 +15,26 @@ include 'header.php';
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
-
+            <?php
+            $menuItems = "select * from `menu_items`";
+            $resMenuItems = $conn -> query($menuItems);
+            ?>
+            <ul class="list-group">
+            <?php
+            while($rowMenuItems = $resMenuItems -> fetch_assoc()){
+              ?>
+              <li class="list-group-item" style="cursor: pointer;" id="menu-<?php echo $rowMenuItems['menu_name'];?>" onclick="activateMenu(this.id)">
+                <?php echo $rowMenuItems['icon'];?>
+                <?php echo $rowMenuItems['menu_name'];?>
+              </li>
+              <?php
+            }
+            ?>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
             <div id="left-side-div">
 
             </div>
@@ -61,7 +80,9 @@ include 'header.php';
                 <li class="list-group-item">Some user related stuff here</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="btn btn-danger btn-block card-link">Logout</a>
+                <form method="post">
+                  <button type="submit" class="btn btn-danger btn-block card-link" name="logout">Logout</button>
+                </form>
               </div>
             </div>
           </div>
@@ -83,6 +104,11 @@ include 'header.php';
   });
 </script>
 <?php
+if(isset($_POST['logout'])){
+  session_destroy();
+  $URL = "login.php";
+  redirect($URL);
+}
 include 'footer.php';
 /**
  * Created by PhpStorm.

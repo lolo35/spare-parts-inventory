@@ -18,3 +18,27 @@ function login(){
     });
   });
 }
+function activateMenu(id){
+  $("li").removeClass("active");
+  $("#" + id).addClass("active");
+  $("#main-content-div").hide("fold", {direction: "up"}, "slow", function(){
+    $.ajax({
+      method: "GET",
+      url: "scripts/php/searchForm.php",
+      cache: false,
+      success: function(searchData){
+        $("#main-content-div").html("");
+        $("#main-content-div").html(searchData);
+        $("#main-content-div").show(
+          "fold",
+           {
+             direction: "down"
+           },
+           "slow",
+            function(){
+              
+        });
+      }
+    });
+  });
+}
