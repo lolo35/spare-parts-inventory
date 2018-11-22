@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  
 });
 function login(){
   console.log("click");
@@ -36,7 +36,7 @@ function activateMenu(id){
            },
            "slow",
             function(){
-              
+
         });
       }
     });

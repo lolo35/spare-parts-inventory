@@ -33,7 +33,7 @@ if(isset($_GET['id'])){
           </div>
           <div class="row">
             <div class="col-sm">
-              <p>Location: <?php echo $row['location'];?></p>
+              <p id="location-info">Location: <?php echo $row['location'];?></p>
             </div>
           </div>
           <div class="row">
@@ -41,14 +41,14 @@ if(isset($_GET['id'])){
               <?php
               if($row['status'] == 0){
                 ?>
-                <div class="alert alert-danger" role="alert">
-                  <strong>Checked out</strong>
+                <div id="location-alert" class="alert alert-danger" role="alert">
+                  <strong id="location-text">Checked out</strong>
                 </div>
                 <?php
               }else{
                 ?>
-                <div class="alert alert-success" role="alert">
-                  <strong>On location</strong>
+                <div id="location-alert" class="alert alert-success" role="alert">
+                  <strong id="location-text">On location</strong>
                 </div>
                 <?php
               }
@@ -87,6 +87,64 @@ if(isset($_GET['id'])){
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+    $("#check-in-btn").on("click", function(){
+      var location = prompt("Please enter location: ", "<?php echo $row['location'];?>");
+      if(location == null || location == ""){
+        alert("Location invalid!");
+      }else{
+        $.ajax({
+          method: "post",
+          url: "scripts/php/checkin.php",
+          data: {
+            post: "true",
+            id: <?php echo $id;?>,
+            location: location
+          },
+          cache: false,
+          success: function(checkinData){
+            if(checkinData === "success"){
+              $("#check-in-btn").prop("disabled", true);
+              $("#check-out-btn").prop("disabled", false);
+              $("#location-alert").removeClass("alert-danger");
+              $("#location-alert").addClass("alert-success");
+              $("#location-text").text("On location");
+              $("#location-info").text("Location: " : location);
+              console.log(checkinData);
+            }
+          }
+        });
+      }
+    });
+    $("#check-out-btn").on("click", function(){
+      var location = prompt("Please enter location: ", "<?php echo $row['location'];?>");
+      if(location == null || location == ""){
+        alert("Location invalid, please provide a valid location!");
+      }else{
+        $.ajax({
+          method: "POST",
+          url: "scripts/php/checkout.php",
+          data: {
+            post: "true",
+            id: <?php echo $id;?>,
+            location: location
+          },
+          cache: false,
+          success: function(checkoutData){
+            if(checkoutData === "success"){
+              $("#check-in-btn").prop("disabled", false);
+              $("#check-out-btn").prop("disabled", true);
+              $("#location-alert").removeClass("alert-success");
+              $("#location-alert").addClass("alert-danger");
+              $("#location-text").text("Checked out");
+              $("#location-info").text("Location: " + location);
+              console.log(checkoutData);
+            }
+          }
+        });
+      }
+    });
+  </script>
   <?php
 }
 ?>
