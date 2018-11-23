@@ -109,7 +109,7 @@ if(isset($_GET['id'])){
               $("#location-alert").removeClass("alert-danger");
               $("#location-alert").addClass("alert-success");
               $("#location-text").text("On location");
-              $("#location-info").text("Location: " : location);
+              $("#location-info").text("Location: " + location);
               console.log(checkinData);
             }
           }
