@@ -70,7 +70,7 @@ if(isset($_GET['id'])){
     </div>
     <div class="row">
       <div class="col-sm">
-        <p><?php echo $row['details'];?></p>
+        <p><?php echo nl2br($row['details']);?></p>
       </div>
     </div>
     <div class="row">

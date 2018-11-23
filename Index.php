@@ -37,8 +37,9 @@ include 'header.php';
             <ul class="list-group">
             <?php
             while($rowMenuItems = $resMenuItems -> fetch_assoc()){
+              $menuName = str_replace(" ", "_", $rowMenuItems['menu_name']);
               ?>
-              <li class="list-group-item" style="cursor: pointer;" id="menu-<?php echo $rowMenuItems['menu_name'];?>" onclick="activateMenu(this.id)">
+              <li class="list-group-item" style="cursor: pointer;" id="menu-<?php echo $menuName;?>" onclick="activateMenu(this.id)">
                 <?php echo $rowMenuItems['icon'];?>
                 <?php echo $rowMenuItems['menu_name'];?>
               </li>
@@ -96,8 +97,14 @@ include 'header.php';
                 <?php
                 if($_SESSION['user_type'] === "admin"){
                   ?>
-                  <li class="list-group-item" style="cursor: pointer;" data-toggle="modal" data-target="#add-user-modal" id="add-user-btn">Add user...</li>
-                  <li class="list-group-item" style="cursor: pointer;" id="delete-user-btn">Delete user...</li>
+                  <li class="list-group-item" style="cursor: pointer;" data-toggle="modal" data-target="#add-user-modal" id="add-user-btn">
+                    <i class="fas fa-plus-square"></i>
+                    Add user...
+                  </li>
+                  <li class="list-group-item" style="cursor: pointer;" id="delete-user-btn">
+                    <i class="fas fa-trash-alt"></i>
+                    Delete user...
+                  </li>
                   <?php
                 }
                 ?>
