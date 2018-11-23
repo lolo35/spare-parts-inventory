@@ -39,7 +39,7 @@ if(isset($_GET['criteria'])){
           <td><i class="fas fa-info-circle"></i></td>
           <td title="Asset Name: <?php echo $row['asset_name'];?>"><?php echo $row['asset_name'];?></td>
           <td><?php echo $row['serial_n'];?></td>
-          <td><?php echo $row['location'];?></td>
+          <td id="location-<?php echo $row['id'];?>"><?php echo $row['location'];?></td>
         </tr>
         <?php
       }

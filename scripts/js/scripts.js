@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+
 });
 function login(){
   console.log("click");
@@ -41,4 +41,7 @@ function activateMenu(id){
       }
     });
   });
+}
+function updateLocation(id, location){
+  $("#location-" + id).text(location);
 }

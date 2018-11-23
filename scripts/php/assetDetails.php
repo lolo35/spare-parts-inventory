@@ -111,6 +111,7 @@ if(isset($_GET['id'])){
               $("#location-text").text("On location");
               $("#location-info").text("Location: " + location);
               console.log(checkinData);
+              updateLocation(<?php echo $id;?> , location);
             }
           }
         });
@@ -139,6 +140,7 @@ if(isset($_GET['id'])){
               $("#location-text").text("Checked out");
               $("#location-info").text("Location: " + location);
               console.log(checkoutData);
+              updateLocation(<?php echo $id;?> , location);
             }
           }
         });
