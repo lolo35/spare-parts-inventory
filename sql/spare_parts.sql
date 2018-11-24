@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2018 at 04:35 AM
+-- Generation Time: Nov 24, 2018 at 01:02 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -30,6 +30,7 @@ USE `spare_parts`;
 -- Table structure for table `menu_items`
 --
 
+DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE `menu_items` (
   `id` int(11) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
@@ -41,7 +42,8 @@ CREATE TABLE `menu_items` (
 --
 
 INSERT INTO `menu_items` (`id`, `menu_name`, `icon`) VALUES
-(1, 'Cautare', '<i class=\"fas fa-search\"></i>');
+(1, 'Search', '<i class=\"fas fa-search\"></i>'),
+(2, 'Add Part', '<i class=\"fas fa-plus-square\"></i>');
 
 -- --------------------------------------------------------
 
@@ -49,6 +51,7 @@ INSERT INTO `menu_items` (`id`, `menu_name`, `icon`) VALUES
 -- Table structure for table `parts`
 --
 
+DROP TABLE IF EXISTS `parts`;
 CREATE TABLE `parts` (
   `id` int(11) NOT NULL,
   `asset_name` varchar(255) NOT NULL,
@@ -63,7 +66,8 @@ CREATE TABLE `parts` (
 --
 
 INSERT INTO `parts` (`id`, `asset_name`, `serial_n`, `location`, `status`, `details`) VALUES
-(1, 'test jig A9', '123456789', 'R51', 0, 'Jig folosit pe liniile 4600,4601,4625,4626');
+(1, 'test jig A9', '123456789', 'R51', 1, 'Jig folosit pe liniile 4600,4601,4625,4626'),
+(3, 'test jig 2', 'test jig 2', 'R52', 1, 'test jig 2\nnew line, for display test');
 
 -- --------------------------------------------------------
 
@@ -71,6 +75,7 @@ INSERT INTO `parts` (`id`, `asset_name`, `serial_n`, `location`, `status`, `deta
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
@@ -83,7 +88,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `pass`, `user_type`) VALUES
-(1, 'Filimon Raul', '00000000150111011315', 'admin');
+(6, 'Filimon Raul', '00000000150111011315', 'admin'),
+(7, 'test user', '00000000150111011316', '');
 
 --
 -- Indexes for dumped tables
@@ -115,19 +121,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `parts`
 --
 ALTER TABLE `parts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
