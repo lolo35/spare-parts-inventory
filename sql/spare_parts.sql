@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2018 at 01:02 AM
+-- Generation Time: Nov 25, 2018 at 04:11 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -27,10 +27,36 @@ USE `spare_parts`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `asset_name` varchar(255) NOT NULL,
+  `serial_n` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `status` int(1) NOT NULL,
+  `details` text NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `trans` varchar(255) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `asset_name`, `serial_n`, `location`, `status`, `details`, `user`, `trans`, `date`) VALUES
+(1, 'test jig A9', '123456789', '4382', 1, 'Jig folosit pe liniile 4600,4601,4625,4626', 'Filimon Raul', 'R51', '2018-11-25 00:00:00'),
+(2, 'test jig A9', '123456789', 'R51', 0, 'Jig folosit pe liniile 4600,4601,4625,4626', 'Filimon Raul', '4382', '2018-11-25 00:00:00'),
+(3, 'test jig A9', '123456789', '4382', 1, 'Jig folosit pe liniile 4600,4601,4625,4626', 'Filimon Raul', 'R51', '2018-11-25 04:11:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `menu_items`
 --
 
-DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE `menu_items` (
   `id` int(11) NOT NULL,
   `menu_name` varchar(255) NOT NULL,
@@ -51,7 +77,6 @@ INSERT INTO `menu_items` (`id`, `menu_name`, `icon`) VALUES
 -- Table structure for table `parts`
 --
 
-DROP TABLE IF EXISTS `parts`;
 CREATE TABLE `parts` (
   `id` int(11) NOT NULL,
   `asset_name` varchar(255) NOT NULL,
@@ -75,7 +100,6 @@ INSERT INTO `parts` (`id`, `asset_name`, `serial_n`, `location`, `status`, `deta
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
@@ -94,6 +118,12 @@ INSERT INTO `users` (`id`, `user`, `pass`, `user_type`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `menu_items`
@@ -116,6 +146,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `menu_items`
